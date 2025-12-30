@@ -91,21 +91,6 @@ https://api.open-meteo.com/v1/forecast
     return fetch(url).then(r => r.json());
 }
 
-
-function loadWeatherForLocation(loc) {
-    const url = `
-https://api.open-meteo.com/v1/forecast
-?latitude=${loc.lat}
-&longitude=${loc.lon}
-&daily=temperature_2m_max,temperature_2m_min
-&timezone=auto
-`;
-
-    return fetch(url)
-        .then(r => r.json())
-        .then(data => renderWeather(loc.name, data));
-}
-
 function renderWeather(name, data) {
     const card = document.createElement("div");
     card.className = "weather-card";
